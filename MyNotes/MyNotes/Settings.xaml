@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="MyNotes.Settings"
+             xmlns:mynotes="clr-namespace:MyNotes"
+             Title="Settings">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label x:Name="fSizeLabel" Text="Font Size" 
+                       FontSize="18"
+                       HorizontalOptions="Start" VerticalOptions="CenterAndExpand"/>
+                <Label x:Name="fValLabel" Text="{Binding mynotes: App.settings.StrFontSize}"
+                       TextColor="{Binding TextColor}" 
+                       VerticalOptions="CenterAndExpand"
+                       FontSize="18"/>
+                <Stepper x:Name="stepper" Minimum="6" Maximum="24" Increment="1" HorizontalOptions="EndAndExpand" Margin="8"
+                         ValueChanged="Stepper_ValueChanged"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label x:Name="themeLabel" Text="Theme" TextColor="{Binding TextColor}" 
+                       FontSize="18"
+                       VerticalOptions="CenterAndExpand"/>
+                <Switch x:Name="switcher" HorizontalOptions="EndAndExpand" Toggled="Switch_Toggled"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
