@@ -6,6 +6,7 @@ namespace MyNotes.ViewModels
     public class NoteVM : INotifyPropertyChanged
     {
         public Note cur { get; set; }
+
         public string Text
         {
             get { return cur.text; }
@@ -28,6 +29,7 @@ namespace MyNotes.ViewModels
         {
             get { return App.settings.FontSize; }
         }
+
         public bool IsFavorite
         {
             get { return cur.isFavorite; }
@@ -48,17 +50,19 @@ namespace MyNotes.ViewModels
         {
             get { return cur.isFavorite ? "Unfavorite" : "Favorite"; }
         }
+
         public string FavTextColor
         {
             get { return cur.isFavorite ? "#F0FFF0" : "#FFA500"; }
         }
+
         public string FavBackColor
         {
             get { return cur.isFavorite ? "#FFA500" : "#F0FFF0"; }
         }
 
-
         public event PropertyChangedEventHandler PropertyChanged;
+
         protected void OnPropertyChanged(string propName)
         {
             if (PropertyChanged != null)

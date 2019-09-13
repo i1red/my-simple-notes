@@ -4,8 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="MyNotes.Views.NoteListView"
-             xmlns:mynotes="clr-namespace:MyNotes">
+             x:Class="MyNotes.Views.NoteListView">
     <ContentView.Content>
         <ListView x:Name="LV" HasUnevenRows="True" SeparatorVisibility="Default" ItemsSource="{Binding Notes}" ItemSelected="OnItemSelected">
             <ListView.ItemTemplate>
@@ -23,13 +22,13 @@
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="34"/>
                                 </Grid.RowDefinitions>
-                                <Button Grid.Column="0" HorizontalOptions="FillAndExpand" Margin="8,0"
+                                <Button Grid.Column="0" HorizontalOptions="FillAndExpand" Margin="8,0" Padding="0"
                                             BackgroundColor="#E34635" BorderColor="#691818" BorderWidth="1" 
-                                            Text="Delete" TextColor="White" FontAttributes="Bold"
+                                            Text="Delete" FontSize="15" TextColor="White" FontAttributes="Bold"
                                             Clicked="ItemDelete_Clicked"/>
-                                <Button Grid.Column="1" HorizontalOptions="FillAndExpand" Margin="8,0"
+                                <Button Grid.Column="1" HorizontalOptions="FillAndExpand" Margin="8,0" Padding="0"
                                             BackgroundColor="{Binding FavBackColor}" BorderColor="OrangeRed" BorderWidth="1"
-                                            Text="{Binding FavState}" TextColor="{Binding FavTextColor}" FontAttributes="Bold"
+                                            Text="{Binding FavState}" FontSize="15" TextColor="{Binding FavTextColor}" FontAttributes="Bold"
                                             Clicked="ItemFavState_Clicked"/>
                             </Grid>
                         </StackLayout>

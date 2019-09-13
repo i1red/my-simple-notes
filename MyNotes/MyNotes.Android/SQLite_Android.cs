@@ -1,6 +1,8 @@
 ﻿using System;
-using MyNotes.Droid;
 using System.IO;
+
+using MyNotes.Droid;
+
 using Xamarin.Forms;
 
 [assembly: Dependency(typeof(SQLite_Android))]

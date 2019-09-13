@@ -4,15 +4,14 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="MyNotes.NotePage"
-             xmlns:mynotes="clr-namespace:MyNotes">
+             x:Class="MyNotes.NotePage">
     <ContentPage.Content>
         <StackLayout Orientation="Vertical">
-            <Editor x:Name="editor" Text="{Binding Text}"  VerticalOptions="FillAndExpand" 
+            <Editor x:Name="editor" Text="{Binding Text}" AutoSize="TextChanges" 
                     TextColor="{Binding TextColor}" FontSize="{Binding FontSize}"/>
-            <Button Text="Save" TextColor="White" FontAttributes="Bold" Clicked="Save_Clicked" 
-                    BackgroundColor="#291A4C" BorderColor="#2A1E48" BorderWidth="2" Margin="2"
-                    VerticalOptions="End" HorizontalOptions="Fill"/>
+            <Button Text="Save" TextColor="White" FontAttributes="Bold" FontSize="18" Clicked="Save_Clicked" 
+                    BackgroundColor="#291A4C" BorderColor="#2A1E48" BorderWidth="2" Margin="20,2" Padding="0"
+                    VerticalOptions="EndAndExpand" HorizontalOptions="Fill"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

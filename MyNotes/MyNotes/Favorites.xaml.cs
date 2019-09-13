@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Collections.ObjectModel;
-using System.Text;
-using System.Threading.Tasks;
-using MyNotes.Models;
+﻿using System.Collections.ObjectModel;
+
 using MyNotes.ViewModels;
 
 using Xamarin.Forms;

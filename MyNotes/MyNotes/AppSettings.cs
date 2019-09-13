@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.IO;
 using Xamarin.Forms;
 using Newtonsoft.Json;
@@ -13,9 +10,11 @@ namespace MyNotes
         const string CONFIG_NAME = "config.json";
 
         public bool darkTheme;
+
         private AppSettings()
         {
             string configPath = DependencyService.Get<ISQLite>().GetDataBasePath(CONFIG_NAME);
+
             if(!File.Exists(configPath))
             {
                 using (var writer = File.CreateText(configPath))
@@ -48,6 +47,7 @@ namespace MyNotes
         }
 
         private static AppSettings instance = null;
+
         public static AppSettings Instance
         {
             get
@@ -58,6 +58,7 @@ namespace MyNotes
             }
         }
         private int fontSize;
+
         public int FontSize
         {
             get { return fontSize; }
@@ -71,12 +72,14 @@ namespace MyNotes
                 }
             }
         }
+
         public string StrFontSize
         {
             get { return fontSize.ToString(); }
         }
 
         private Theme appTheme;
+
         public Theme AppTheme
         {
             get { return appTheme; }
@@ -89,7 +92,9 @@ namespace MyNotes
                 }
             }
         }
+
         public event PropertyChangedEventHandler PropertyChanged;
+
         protected void OnPropertyChanged(string propName)
         {
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));

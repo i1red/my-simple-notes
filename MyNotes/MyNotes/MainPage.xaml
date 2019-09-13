@@ -3,8 +3,6 @@
                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                 xmlns:d="http://xamarin.com/schemas/2014/forms/design"
                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-                xmlns:mynotes="clr-namespace:MyNotes"
-                xmlns:views="clr-namespace:MyNotes.Views"
                 mc:Ignorable="d"
                 x:Class="MyNotes.MainPage"
                 Title="MyNotes">
@@ -26,11 +24,11 @@
                     <Label Text="MENU" TextColor="{Binding TextColor}"
                            HorizontalOptions="CenterAndExpand"
                            FontSize="24" FontAttributes="Bold"/>
-                    <ListView x:Name="mainList" ItemsSource="{StaticResource Menu}" ItemSelected="OnItemSelected">
+                    <ListView x:Name="mainList" ItemsSource="{Binding MenuItems}" ItemSelected="OnItemSelected">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
-                                    <Label Text="{Binding}" TextColor="{Binding TextColor}" 
+                                    <Label Text="{Binding Text}" TextColor="{Binding Color}" 
                                            HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
                                            FontSize="20" FontAttributes="Bold"/>
                                 </ViewCell>

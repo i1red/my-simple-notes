@@ -1,42 +1,85 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Collections.ObjectModel;
-using MyNotes.Views;
-using MyNotes.ViewModels;
-using MyNotes.Models;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 using Xamarin.Forms;
 
 namespace MyNotes
 {
-    // Learn more about making custom code visible in the Xamarin.Forms previewer
-    // by visiting https://aka.ms/xamarinforms-previewer
     [DesignTimeVisible(false)]
     public partial class MainPage : MasterDetailPage
     {
-        public static Color barColor;
-        public MainPage()
+        public class Paragraph : INotifyPropertyChanged
         {
-            InitializeComponent();
-            Detail = new NavigationPage(new AllNotes()) {BarBackgroundColor = Color.FromHex(App.settings.AppTheme.BarColor) };
-            Master.BackgroundColor = Color.FromHex(MasterPageColor);
+            public string Text { get; set; }
+
+            public string color = null;
+
+            public string Color
+            {
+                set
+                {
+                    if (color != value)
+                    {
+                        color = value;
+                        OnPropertyChanged("Color");
+                    }
+                }
+                get { return color; }
+            }
+
+            public event PropertyChangedEventHandler PropertyChanged;
+
+            protected void OnPropertyChanged(string propName)
+            {
+                if (PropertyChanged != null)
+                    PropertyChanged(this, new PropertyChangedEventArgs(propName));
+            }
         }
+
+        public static Color barColor;
+
+        public Paragraph[] menuItems = {new Paragraph(){Text = "ALL NOTES" }, new Paragraph() { Text = "FAVORITES"},
+            new Paragraph() {Text = "SETTINGS" } };
+
+        public Paragraph[] MenuItems
+        {
+            get { return menuItems; }
+        }
+
+        private string textColor = null;
 
         public string TextColor
         {
-            get { return App.settings.AppTheme.TextColor; }
+            set
+            {
+                if (textColor != value)
+                {
+                    textColor = value;
+                    for (int i = 0; i < 3; ++i)
+                        menuItems[i].Color = value;
+                    OnPropertyChanged("TextColor");
+                }
+            }
+            get { return textColor; }
         }
+
         public string MasterPageColor
         {
-            get {return App.settings.AppTheme.MasterPageColor; }
+            get { return App.settings.AppTheme.MasterPageColor; }
         }
+
+        public MainPage()
+        {
+            InitializeComponent();
+            Detail = new NavigationPage(new AllNotes()) { BarBackgroundColor = Color.FromHex(App.settings.AppTheme.BarColor) };
+            Master.BindingContext = this;
+            TextColor = AppSettings.Instance.AppTheme.TextColor;
+            Master.BackgroundColor = Color.FromHex(MasterPageColor);
+
+        }
+
         private void OnItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            var menuItem = (string)e.SelectedItem;
-            switch(menuItem)
+            var menuItem = (Paragraph)e.SelectedItem;
+            switch(menuItem.Text)
             {
                 case "ALL NOTES":
                     Detail = new NavigationPage(new AllNotes()) { BarBackgroundColor = Color.FromHex(App.settings.AppTheme.BarColor) };
@@ -49,6 +92,5 @@ namespace MyNotes
                     break;
             }
         }
-
     }
 }

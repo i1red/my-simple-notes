@@ -4,16 +4,15 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             xmlns:mynotes="clr-namespace:MyNotes"
              xmlns:views="clr-namespace:MyNotes.Views"
              x:Class="MyNotes.AllNotes"
              Title="MyNotes">
     <ContentPage.Content>
         <StackLayout>
             <views:NoteListView x:Name="NoteLV" Select="Selected" Delete="Delete_Clicked" FavState="FavState_Clicked"/>
-            <Button VerticalOptions="End" HorizontalOptions="Fill" Margin="3"
+            <Button VerticalOptions="End" HorizontalOptions="Fill" Margin="20,2" Padding="0"
                             BackgroundColor="#291A4C" BorderColor="#2A1E48" BorderWidth="2"
-                            Text="+New note" TextColor="White" FontAttributes="Bold" FontSize="20"
+                            Text="+New note" TextColor="White" FontAttributes="Bold" FontSize="18"
                             Clicked="NewNote_Clicked" />
         </StackLayout>
     </ContentPage.Content>

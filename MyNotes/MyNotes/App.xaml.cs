@@ -1,8 +1,5 @@
-﻿using System;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+﻿using Xamarin.Forms;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using MyNotes.ViewModels;
 using MyNotes.Models;
 
@@ -15,17 +12,7 @@ namespace MyNotes
         public static ObservableCollection<NoteVM> allNotes;
         public static AppSettings settings;
         public static MainPage mPage;
-        public static NotesRepository Database
-        {
-            get
-            {
-                if (database == null)
-                {
-                    database = new NotesRepository(DATABASE_NAME);
-                }
-                return database;
-            }
-        }
+
         public App()
         {
             InitializeComponent();
@@ -36,6 +23,18 @@ namespace MyNotes
                 allNotes.Insert(0, new NoteVM() { cur = item });
 
             MainPage = mPage = new MainPage();
+        }
+
+        public static NotesRepository Database
+        {
+            get
+            {
+                if (database == null)
+                {
+                    database = new NotesRepository(DATABASE_NAME);
+                }
+                return database;
+            }
         }
 
         protected override void OnStart()

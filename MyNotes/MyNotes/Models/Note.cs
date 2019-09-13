@@ -7,7 +7,9 @@ namespace MyNotes.Models
     {
         [PrimaryKey, AutoIncrement, Column("_id")]
         public int Id { get; set; }
+
         public string text { get; set; }
+
         public bool isFavorite { get; set; }
     }
 }
