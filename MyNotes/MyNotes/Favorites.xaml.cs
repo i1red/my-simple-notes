@@ -13,7 +13,7 @@ namespace MyNotes
         public Favorites()
         {
             InitializeComponent();
-            BackgroundColor = Color.FromHex(App.settings.AppTheme.DetailPageColor);
+            BackgroundColor = Color.FromHex(AppSettings.Instance.AppTheme.DetailPageColor);
             FavNoteLV.Notes = new ObservableCollection<NoteVM>();
             foreach (NoteVM item in App.allNotes)
                 if(item.IsFavorite)
@@ -25,7 +25,7 @@ namespace MyNotes
         
         public string DetailPageColor
         {
-            get { return App.settings.AppTheme.DetailPageColor; }
+            get { return AppSettings.Instance.AppTheme.DetailPageColor; }
         }
         private async void FavSelected(NoteVM note)
         {

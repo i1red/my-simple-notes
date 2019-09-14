@@ -12,13 +12,13 @@ namespace MyNotes
     {
         public string DetailPageColor
         {
-            get { return App.settings.AppTheme.DetailPageColor; }
+            get { return AppSettings.Instance.AppTheme.DetailPageColor; }
         }
 
         public NotePage()
         {
             InitializeComponent();
-            BackgroundColor = Color.FromHex(App.settings.AppTheme.DetailPageColor);
+            BackgroundColor = Color.FromHex(AppSettings.Instance.AppTheme.DetailPageColor);
         }
 
         private void Save_Clicked(object sender, EventArgs e)

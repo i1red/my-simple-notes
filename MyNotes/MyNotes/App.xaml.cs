@@ -10,14 +10,12 @@ namespace MyNotes
         public const string DATABASE_NAME = "notes.db";
         public static NotesRepository database;
         public static ObservableCollection<NoteVM> allNotes;
-        public static AppSettings settings;
         public static MainPage mPage;
 
         public App()
         {
             InitializeComponent();
             allNotes = new ObservableCollection<NoteVM>();
-            settings = AppSettings.Instance;
 
             foreach (Note item in Database.GetItems())
                 allNotes.Insert(0, new NoteVM() { cur = item });
@@ -44,7 +42,7 @@ namespace MyNotes
 
         protected override void OnSleep()
         {
-            settings.SaveConfig();
+            AppSettings.Instance.SaveConfig();
             // Handle when your app sleeps
         }
 

@@ -15,7 +15,7 @@ namespace MyNotes
         {
             InitializeComponent();
             NoteLV.Notes = App.allNotes;
-            BackgroundColor = Color.FromHex(App.settings.AppTheme.DetailPageColor);
+            BackgroundColor = Color.FromHex(AppSettings.Instance.AppTheme.DetailPageColor);
             NoteLV.Content.BindingContext = NoteLV;
             BindingContext = this;
         }

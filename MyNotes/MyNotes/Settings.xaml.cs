@@ -9,7 +9,7 @@ namespace MyNotes
         public Settings()
         {
             InitializeComponent();
-            switcher.IsToggled = App.settings.darkTheme;
+            switcher.IsToggled = AppSettings.Instance.darkTheme;
             fSizeLabel.TextColor = Color.FromHex(AppSettings.Instance.AppTheme.TextColor);
             fValLabel.TextColor = Color.FromHex(AppSettings.Instance.AppTheme.TextColor);
             themeLabel.TextColor = Color.FromHex(AppSettings.Instance.AppTheme.TextColor);
@@ -29,22 +29,22 @@ namespace MyNotes
 
         public string DetailPageColor
         {
-            get { return App.settings.AppTheme.DetailPageColor; }
+            get { return AppSettings.Instance.AppTheme.DetailPageColor; }
         }
 
         public string TextColor
         {
-            get { return App.settings.AppTheme.TextColor; }
+            get { return AppSettings.Instance.AppTheme.TextColor; }
         }
 
         public string StrFontSize
         {
-            get { return App.settings.FontSize.ToString(); }
+            get { return AppSettings.Instance.FontSize.ToString(); }
         }
 
         public int FontSize
         {
-            get { return App.settings.FontSize; }
+            get { return AppSettings.Instance.FontSize; }
         }
 
         private void Stepper_ValueChanged(object sender, ValueChangedEventArgs e)
@@ -55,12 +55,12 @@ namespace MyNotes
 
         private void Switch_Toggled(object sender, ToggledEventArgs e)
         {
-            switcher.IsToggled = App.settings.darkTheme = e.Value;
+            switcher.IsToggled = AppSettings.Instance.darkTheme = e.Value;
 
             if (switcher.IsToggled)
-                App.settings.AppTheme = Theme.DarkTheme;
+                AppSettings.Instance.AppTheme = Theme.DarkTheme;
             else
-                App.settings.AppTheme = Theme.LightTheme;
+                AppSettings.Instance.AppTheme = Theme.LightTheme;
 
             ResetTheme();
 

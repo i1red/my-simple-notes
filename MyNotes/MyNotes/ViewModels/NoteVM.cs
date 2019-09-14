@@ -22,12 +22,12 @@ namespace MyNotes.ViewModels
 
         public string TextColor
         {
-            get { return App.settings.AppTheme.TextColor; }
+            get { return AppSettings.Instance.AppTheme.TextColor; }
         }
 
         public int FontSize
         {
-            get { return App.settings.FontSize; }
+            get { return AppSettings.Instance.FontSize; }
         }
 
         public bool IsFavorite
@@ -65,8 +65,7 @@ namespace MyNotes.ViewModels
 
         protected void OnPropertyChanged(string propName)
         {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(propName));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
         }
     }
 }

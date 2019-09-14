@@ -29,12 +29,9 @@ namespace MyNotes
 
             protected void OnPropertyChanged(string propName)
             {
-                if (PropertyChanged != null)
-                    PropertyChanged(this, new PropertyChangedEventArgs(propName));
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
             }
         }
-
-        public static Color barColor;
 
         public Paragraph[] menuItems = {new Paragraph(){Text = "ALL NOTES" }, new Paragraph() { Text = "FAVORITES"},
             new Paragraph() {Text = "SETTINGS" } };
@@ -63,13 +60,13 @@ namespace MyNotes
 
         public string MasterPageColor
         {
-            get { return App.settings.AppTheme.MasterPageColor; }
+            get { return AppSettings.Instance.AppTheme.MasterPageColor; }
         }
 
         public MainPage()
         {
             InitializeComponent();
-            Detail = new NavigationPage(new AllNotes()) { BarBackgroundColor = Color.FromHex(App.settings.AppTheme.BarColor) };
+            Detail = new NavigationPage(new AllNotes()) { BarBackgroundColor = Color.FromHex(AppSettings.Instance.AppTheme.BarColor) };
             Master.BindingContext = this;
             TextColor = AppSettings.Instance.AppTheme.TextColor;
             Master.BackgroundColor = Color.FromHex(MasterPageColor);
@@ -82,13 +79,13 @@ namespace MyNotes
             switch(menuItem.Text)
             {
                 case "ALL NOTES":
-                    Detail = new NavigationPage(new AllNotes()) { BarBackgroundColor = Color.FromHex(App.settings.AppTheme.BarColor) };
+                    Detail = new NavigationPage(new AllNotes()) { BarBackgroundColor = Color.FromHex(AppSettings.Instance.AppTheme.BarColor) };
                     break;
                 case "FAVORITES":
-                    Detail = new NavigationPage(new Favorites()) { BarBackgroundColor = Color.FromHex(App.settings.AppTheme.BarColor) };
+                    Detail = new NavigationPage(new Favorites()) { BarBackgroundColor = Color.FromHex(AppSettings.Instance.AppTheme.BarColor) };
                     break;
                 case "SETTINGS":
-                    Detail = new NavigationPage(new Settings()) { BarBackgroundColor = Color.FromHex(App.settings.AppTheme.BarColor) };
+                    Detail = new NavigationPage(new Settings()) { BarBackgroundColor = Color.FromHex(AppSettings.Instance.AppTheme.BarColor) };
                     break;
             }
         }

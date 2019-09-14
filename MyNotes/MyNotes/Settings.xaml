@@ -13,7 +13,7 @@
                 <Label x:Name="fSizeLabel" Text="Font Size" 
                        FontSize="18"
                        HorizontalOptions="Start" VerticalOptions="CenterAndExpand"/>
-                <Label x:Name="fValLabel" Text="{Binding mynotes: App.settings.StrFontSize}"
+                <Label x:Name="fValLabel" Text="{Binding mynotes: AppSettings.Instance.StrFontSize}"
                        TextColor="{Binding TextColor}" 
                        VerticalOptions="CenterAndExpand"
                        FontSize="18"/>
